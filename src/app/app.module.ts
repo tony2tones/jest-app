@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common//http';
 
 import { AppComponent } from './app.component';
 import { JestTestComponent } from './jest-test/jest-test.component';
+import { MockService } from './services/mock-service.service';
 
 @NgModule({
   declarations: [
@@ -10,9 +12,10 @@ import { JestTestComponent } from './jest-test/jest-test.component';
     JestTestComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [MockService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

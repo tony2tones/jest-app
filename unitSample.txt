@@ -1,0 +1,53 @@
+import { LookupsMockService } from './lookups-mock.service';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { TestBed, async } from '@angular/core/testing';
+import { HttpModule } from '@angular/http';
+import { Observable } from 'rxjs';
+
+describe('LookupsMockService', () => {
+
+    let lookupsMockService;
+
+    beforeEach(async(() => {
+
+        TestBed.configureTestingModule({
+            imports: [HttpModule],
+            providers: [LookupsMockService],
+            schemas: [NO_ERRORS_SCHEMA]
+        }).compileComponents();
+
+        lookupsMockService = TestBed.get(LookupsMockService);
+    }));
+
+    it('getLanguages should return a array with 5 results', async(async () => {
+        lookupsMockService
+            .getLanguages()
+            .subscribe((result) => {
+                expect(result.length).toBe(5);
+            });
+    }));
+
+    it('getCountries should return a array with 6 results', async(async () => {
+        lookupsMockService
+            .getCountries()
+            .subscribe((result) => {
+                expect(result.length).toBe(6);
+            });
+    }));
+
+    it('getCountries should return a array with 5 results', async(async () => {
+        lookupsMockService
+            .getBrands()
+            .subscribe((result) => {
+                expect(result.length).toBe(3);
+            });
+    }));
+
+    it('getLanguagesStatic should return a array with 5 results', async(async () => {
+        lookupsMockService
+            .getLanguagesStatic()
+            .subscribe((result) => {
+                expect(result.length).toBe(5);
+            });
+    }));
+});

@@ -1,0 +1,56 @@
+MockData
+
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Language, Country, Brand } from '../domain';
+import { ILookupService } from './lookups.service';
+import { LanguagesResponseModel } from '../domain/languages-response.model';
+
+const brands: Brand[] = [
+    { name: 'Barclays' },
+    { name: 'Absa' },
+    { name: 'NBC' },
+];
+
+const languages: Language[] = [
+    { codeAlpha2: 'zu', name: 'Zulu' },
+    { codeAlpha2: 'tt', name: 'Tatar' },
+    { codeAlpha2: 'ru', name: 'Russian' },
+    { codeAlpha2: 'en', name: 'English' },
+    { codeAlpha2: 'cz', name: 'Czech' },
+];
+
+const countries: Country[] = [
+    { codeAlpha2: 'ZA', name: 'South Africa' },
+    { codeAlpha2: 'CZ', name: 'Czech republic' },
+    { codeAlpha2: 'AF', name: 'Afghanistan' },
+    { codeAlpha2: 'AL', name: 'Albania' },
+    { codeAlpha2: 'DZ', name: 'Algeria' },
+    { codeAlpha2: 'AS', name: 'American Samoa' },
+];
+const languagesStatic: LanguagesResponseModel[] = [
+    { iso639code1: 'zu', iso639code2: 'zu', name: 'Zulu' },
+    { iso639code1: 'tt', iso639code2: 'tt', name: 'Tatar' },
+    { iso639code1: 'ru', iso639code2: 'ru', name: 'Russian' },
+    { iso639code1: 'en', iso639code2: 'en', name: 'English' },
+    { iso639code1: 'cz', iso639code2: 'cz', name: 'Czech' },
+];
+
+@Injectable()
+export class LookupsMockService implements ILookupService {
+
+    getLanguages(): Observable<Language[]> {
+        return Observable.of<Language[]>(languages).delay(500);
+    }
+
+    getCountries(): Observable<Country[]> {
+        return Observable.of<Country[]>(countries).delay(500);
+    }
+
+    getBrands(): Observable<Brand[]> {
+        return Observable.of<Brand[]>(brands).delay(500);
+    }
+    getLanguagesStatic(): Observable<LanguagesResponseModel[]> {
+        return Observable.of<LanguagesResponseModel[]>(languagesStatic).delay(500);
+     }
+}

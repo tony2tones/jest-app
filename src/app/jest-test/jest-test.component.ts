@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MockService } from '../services/mock-service.service';
 
 @Component({
   selector: 'app-jest-test',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./jest-test.component.css']
 })
 export class JestTestComponent implements OnInit {
-
-  constructor() { }
+  data: any;
+  constructor(private _getOccupation: MockService) { }
 
   ngOnInit(): void {
+  }
+
+  getOccy() {
+    this.data = this._getOccupation.getOccupation();
   }
 
 }
